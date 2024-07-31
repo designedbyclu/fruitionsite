@@ -25,6 +25,7 @@ export default function code(data) {
   
   /* Step 1: enter your domain name like fruitionsite.com */
   const MY_DOMAIN = '${url}';
+  const MY_NOTION_DOMAIN = '';
   
   /*
    * Step 2: enter your URL slug to page ID mapping
