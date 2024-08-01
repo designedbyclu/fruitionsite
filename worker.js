@@ -118,7 +118,16 @@ async function fetchAndApply(request) {
     );
     response.headers.set("Content-Type", "application/x-javascript");
     return response;
-  } else if (slugs.indexOf(url.pathname.slice(1)) > -1) {
+  }else if (url.pathname.endsWith(".js")){
+    response = await fetch(url.toString());
+    let body = await response.text();
+    response = new Response(
+      body,
+      response
+    );
+    response.headers.set("Content-Type", "application/x-javascript");
+    return response;
+  }else if (slugs.indexOf(url.pathname.slice(1)) > -1) {
     const pageId = SLUG_TO_PAGE[url.pathname.slice(1)];
     return Response.redirect('https://' + MY_DOMAIN + '/' + pageId, 301);
   } else {
